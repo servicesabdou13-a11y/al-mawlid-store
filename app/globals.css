@@ -2,26 +2,134 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Noto+Kufi+Arabic:wght@300;400;500;600;700&display=swap');
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Brand palette sourced from official ALMAWLID Cooperative logo */
+    --background: #FBF0D0;        /* parchment — brand card background tone */
+    --foreground: #2A1808;        /* dark warm brown — readable on parchment */
+    --border: #DCC8A0;
+    --input: #F5E8C0;
+    --ring: #5A8010;               /* argan leaf green */
+    --radius: 0.75rem;
+    --muted: #F0E0B0;
+    --muted-foreground: #6B4820;
+    --accent: #E8A020;             /* argan oil gold */
+    --accent-foreground: #13100A;
+    --destructive: #dc2626;
+    --destructive-foreground: #ffffff;
+    /* Font variables */
+    --font-playfair: 'Playfair Display', Georgia, serif;
+    --font-inter: 'Inter', system-ui, sans-serif;
+    --font-arabic: 'Noto Kufi Arabic', Tahoma, Arial, sans-serif;
   }
-}
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-inter);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  [dir="rtl"],
+  [dir="rtl"] body {
+    font-family: var(--font-arabic);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-playfair);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  [dir="rtl"] h1,
+  [dir="rtl"] h2,
+  [dir="rtl"] h3,
+  [dir="rtl"] h4 {
+    font-family: var(--font-arabic);
+  }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+  .text-balance { text-wrap: balance; }
+  .font-arabic  { font-family: var(--font-arabic); }
+  .font-serif   { font-family: var(--font-playfair); }
+}
+
+/* ── Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #F0E0B0; }
+::-webkit-scrollbar-thumb { background: #5A8010; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #486808; }
+
+/* ── Honeycomb pattern — golden on dark (hero section) ── */
+.honeycomb-bg {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='97'%3E%3Cpath d='M42 0 L84 24.25 L84 72.75 L42 97 L0 72.75 L0 24.25 Z' fill='none' stroke='%23E8A020' stroke-width='0.6' stroke-opacity='0.12'/%3E%3Cpath d='M42 48.5 L84 72.75 L84 121.25 L42 145.5 L0 121.25 L0 72.75 Z' fill='none' stroke='%23E8A020' stroke-width='0.6' stroke-opacity='0.12'/%3E%3C/svg%3E");
+}
+
+/* ── Parchment pattern — subtle for light sections ──────── */
+.parchment-bg {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='97'%3E%3Cpath d='M42 0 L84 24.25 L84 72.75 L42 97 L0 72.75 L0 24.25 Z' fill='none' stroke='%234A2C14' stroke-width='0.5' stroke-opacity='0.06'/%3E%3Cpath d='M42 48.5 L84 72.75 L84 121.25 L42 145.5 L0 121.25 L0 72.75 Z' fill='none' stroke='%234A2C14' stroke-width='0.5' stroke-opacity='0.06'/%3E%3C/svg%3E");
+}
+
+/* ── Product card hover ──────────────────────────────────── */
+.product-card:hover .product-image {
+  transform: scale(1.06);
+}
+
+/* ── WhatsApp pulsing glow ───────────────────────────────── */
+@keyframes whatsapp-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+  50%       { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+}
+.whatsapp-btn { animation: whatsapp-pulse 2.5s infinite; }
+
+/* ── Golden glow (logo drop color) ──────────────────────── */
+@keyframes gold-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(232, 160, 32, 0.3); }
+  50%       { box-shadow: 0 0 40px rgba(232, 160, 32, 0.6); }
+}
+.gold-glow { animation: gold-glow 3s ease-in-out infinite; }
+
+/* ── Gradient text (gold) ────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #F5C850, #E8A020, #C88010);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Cart sidebar overlay ─────────────────────────────────── */
+.cart-sidebar-overlay { animation: fadeIn 0.2s ease-out; }
+
+/* ── Reveal on scroll ─────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── Moroccan ornamental divider ──────────────────────────── */
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #C88010;
+}
+.ornament-divider::before,
+.ornament-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #C88010, transparent);
 }
