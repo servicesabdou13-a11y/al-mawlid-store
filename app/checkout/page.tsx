@@ -87,7 +87,7 @@ export default function CheckoutPage() {
           <div className="lg:col-span-2 space-y-6">
             {/* Contact Form */}
             <div className={cn("bg-white rounded-2xl p-6 border border-border/50", isRtl ? "text-right" : "text-left")}>
-              <h2 className={cn("text-lg font-semibold text-primary-800 mb-6 flex items-center gap-2", isRtl ? "flex-row-reverse justify-end" : "")}>
+              <h2 className={cn("text-lg font-semibold text-earth-800 mb-6 flex items-center gap-2", isRtl ? "flex-row-reverse justify-end" : "")}>
                 <CheckCircle className="w-5 h-5 text-primary-500" />
                 {tx.checkout.contactInfo}
               </h2>
@@ -155,7 +155,7 @@ export default function CheckoutPage() {
 
             {/* Payment method: COD */}
             <div className={cn("bg-white rounded-2xl p-6 border border-border/50", isRtl ? "text-right" : "text-left")}>
-              <h2 className={cn("text-lg font-semibold text-primary-800 mb-4 flex items-center gap-2", isRtl ? "flex-row-reverse justify-end" : "")}>
+              <h2 className={cn("text-lg font-semibold text-earth-800 mb-4 flex items-center gap-2", isRtl ? "flex-row-reverse justify-end" : "")}>
                 <Truck className="w-5 h-5 text-honey-500" />
                 {tx.checkout.codTitle}
               </h2>
@@ -195,7 +195,7 @@ export default function CheckoutPage() {
           {/* Right: Order Summary */}
           <div className="lg:col-span-1">
             <div className={cn("bg-white rounded-2xl p-6 border border-border/50 sticky top-24", isRtl ? "text-right" : "text-left")}>
-              <h2 className="text-lg font-semibold text-primary-800 mb-5">{tx.checkout.orderSummary}</h2>
+              <h2 className="text-lg font-semibold text-earth-800 mb-5">{tx.checkout.orderSummary}</h2>
 
               {/* Items */}
               <div className="space-y-4 mb-6">
@@ -211,7 +211,7 @@ export default function CheckoutPage() {
                       />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-primary-800 truncate">
+                      <p className="text-sm font-medium text-earth-800 truncate">
                         {item.product.translations[lang].name}
                       </p>
                       <p className="text-xs text-muted-foreground">× {item.quantity}</p>
@@ -233,7 +233,7 @@ export default function CheckoutPage() {
                   <span className="text-muted-foreground">{tx.checkout.shipping}</span>
                   <span className="font-medium text-green-600">{tx.checkout.shippingFree}</span>
                 </div>
-                <div className={cn("flex justify-between text-base font-bold text-primary-800 border-t border-border pt-2.5", isRtl ? "flex-row-reverse" : "")}>
+                <div className={cn("flex justify-between text-base font-bold text-earth-800 border-t border-border pt-2.5", isRtl ? "flex-row-reverse" : "")}>
                   <span>{tx.checkout.total}</span>
                   <span className="text-honey-600 text-lg">{formatPrice(total)}</span>
                 </div>

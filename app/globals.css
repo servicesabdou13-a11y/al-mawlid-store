@@ -51,12 +51,20 @@
     line-height: 1.2;
   }
 
+  /* Task 1 — heading color fix for cream backgrounds */
+  h1, h2 { color: #2D5016; }
+  h3, h4 { color: #3D2817; }
+
   [dir="rtl"] h1,
   [dir="rtl"] h2,
   [dir="rtl"] h3,
   [dir="rtl"] h4 {
     font-family: var(--font-arabic);
   }
+
+  /* hero section overrides — text sits on parchment bg */
+  .hero-section h1 { color: #3D2817; }
+  .hero-section .hero-accent { color: #5A8010; }
 }
 
 @layer utilities {

@@ -26,7 +26,7 @@ export default function FeaturedProducts() {
             <span className="inline-block bg-honey-100 text-honey-700 text-sm font-medium px-4 py-1.5 rounded-full mb-4">
               {lang === "ar" ? "منتجاتنا" : "Nos Produits"}
             </span>
-            <h2 className={cn("text-3xl sm:text-4xl font-bold text-primary-800 mb-3", isRtl ? "font-arabic" : "font-serif")}>
+            <h2 className={cn("text-3xl sm:text-4xl font-bold text-earth-800 mb-3", isRtl ? "font-arabic" : "font-serif")}>
               {tx.products.featured}
             </h2>
             <p className="text-muted-foreground max-w-lg">

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ShoppingCart, Star } from "lucide-react";
@@ -28,6 +28,7 @@ const badgeVariantMap: Record<string, "premium" | "bestseller" | "new" | "organi
 export default function ProductCard({ product, className }: ProductCardProps) {
   const { addItem } = useCartStore();
   const { lang } = useLanguageStore();
+  const [imgSrc, setImgSrc] = useState(product.images[0]);
   const tx = t(lang);
   const isRtl = lang === "ar";
 
@@ -49,11 +50,15 @@ export default function ProductCard({ product, className }: ProductCardProps) {
       {/* Image Container */}
       <Link href={`/products/${product.slug}`} className="relative h-52 overflow-hidden bg-cream-300 block">
         <Image
-          src={product.images[0]}
+          src={imgSrc}
           alt={name}
           fill
           className="product-image object-cover transition-transform duration-500"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          onError={() => {
+            const fallback = product.images[1];
+            if (fallback && imgSrc !== fallback) setImgSrc(fallback);
+          }}
         />
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -90,7 +95,7 @@ export default function ProductCard({ product, className }: ProductCardProps) {
         {/* Name */}
         <Link href={`/products/${product.slug}`}>
           <h3 className={cn(
-            "font-semibold text-primary-800 text-base mb-1.5 line-clamp-2 hover:text-primary-600 transition-colors",
+            "font-semibold text-earth-800 text-base mb-1.5 line-clamp-2 hover:text-primary-600 transition-colors",
             isRtl ? "font-arabic" : ""
           )}>
             {name}

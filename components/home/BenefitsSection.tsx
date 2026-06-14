@@ -21,7 +21,7 @@ export default function BenefitsSection() {
           <span className="inline-block bg-primary-50 text-primary-600 text-sm font-medium px-4 py-1.5 rounded-full mb-4">
             {lang === "ar" ? "مزايانا" : "Nos Avantages"}
           </span>
-          <h2 className={cn("text-3xl sm:text-4xl font-bold text-primary-800 mb-4", isRtl ? "font-arabic" : "font-serif")}>
+          <h2 className={cn("text-3xl sm:text-4xl font-bold text-earth-800 mb-4", isRtl ? "font-arabic" : "font-serif")}>
             {tx.benefits.title}
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-base">
@@ -52,7 +52,7 @@ export default function BenefitsSection() {
                 >
                   <Icon className="w-6 h-6 text-honey-300" />
                 </div>
-                <h3 className={cn("font-semibold text-primary-800 mb-2 text-base", isRtl ? "font-arabic" : "")}>
+                <h3 className={cn("font-semibold text-earth-800 mb-2 text-base", isRtl ? "font-arabic" : "")}>
                   {item.title}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">

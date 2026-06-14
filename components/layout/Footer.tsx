@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { useLanguageStore } from "@/lib/store/languageStore";
 import { t } from "@/lib/i18n/translations";
-import { AlMawlidLogo } from "@/components/ui/AlMawlidLogo";
+import { LogoImage } from "@/components/ui/LogoImage";
 import { cn } from "@/lib/utils";
 
 // WhatsApp SVG inline
@@ -63,8 +63,8 @@ export default function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-1 space-y-5">
             <div className={cn("flex items-center gap-3", isRtl ? "flex-row-reverse justify-end" : "")}>
-              <div className="rounded-full overflow-hidden ring-2 ring-honey-500/30">
-                <AlMawlidLogo size={48} />
+              <div className="rounded-full overflow-hidden ring-2 ring-honey-500/30 flex-shrink-0">
+                <LogoImage size={48} />
               </div>
               <div>
                 <p className="font-bold text-cream-100 font-arabic text-base">تعاونية المولد</p>

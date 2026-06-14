@@ -40,7 +40,7 @@ export default function CartSidebar() {
         <div className="flex items-center justify-between p-5 border-b border-border bg-white">
           <div className="flex items-center gap-2">
             <ShoppingBag className="w-5 h-5 text-primary-500" />
-            <h2 className="text-lg font-semibold text-primary-800">{tx.cart.title}</h2>
+            <h2 className="text-lg font-semibold text-earth-800">{tx.cart.title}</h2>
             {items.length > 0 && (
               <span className="bg-honey-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
                 {items.reduce((s, i) => s + i.quantity, 0)}
@@ -94,7 +94,7 @@ export default function CartSidebar() {
 
                     {/* Details */}
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-primary-800 truncate">{name}</p>
+                      <p className="text-sm font-medium text-earth-800 truncate">{name}</p>
                       <p className="text-xs text-earth-500 mt-0.5">{item.product.weight}</p>
                       <p className="text-sm font-bold text-honey-600 mt-1">
                         {formatPrice(item.product.price * item.quantity)}

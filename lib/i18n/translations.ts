@@ -28,9 +28,9 @@ const translations = {
     },
     categories: {
       all: "الكل",
-      honey: "العسل",
+      honey: "أملو",
       oils: "الزيوت",
-      supplements: "مكملات النحل",
+      supplements: "مكملات",
     },
     products: {
       featured: "المنتجات المميزة",
@@ -165,9 +165,9 @@ const translations = {
     },
     categories: {
       all: "Tout",
-      honey: "Miels",
+      honey: "Amlou",
       oils: "Huiles",
-      supplements: "Suppléments",
+      supplements: "Compléments",
     },
     products: {
       featured: "Produits Vedettes",

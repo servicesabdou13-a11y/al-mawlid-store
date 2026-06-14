@@ -28,6 +28,7 @@ export default function ProductDetailPage() {
 
   const [quantity, setQuantity] = useState(1);
   const [activeImage, setActiveImage] = useState(0);
+  const [imgSrcs, setImgSrcs] = useState<string[]>([]);
 
   const product = getProductBySlug(slug);
 
@@ -88,12 +89,22 @@ export default function ProductDetailPage() {
           <div className="space-y-4">
             <div className="relative h-80 sm:h-96 lg:h-[420px] rounded-2xl overflow-hidden bg-cream-300 shadow-card">
               <Image
-                src={product.images[activeImage] || product.images[0]}
+                src={imgSrcs[activeImage] ?? product.images[activeImage] ?? product.images[0]}
                 alt={translation.name}
                 fill
                 className="object-cover transition-opacity duration-300"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
+                onError={() => {
+                  const fallback = product.images[1];
+                  if (fallback) {
+                    setImgSrcs((prev) => {
+                      const next = [...prev];
+                      next[activeImage] = fallback;
+                      return next;
+                    });
+                  }
+                }}
               />
               {product.badge && (
                 <div className={cn("absolute top-4", isRtl ? "right-4" : "left-4")}>
@@ -132,7 +143,7 @@ export default function ProductDetailPage() {
               <span className="text-sm text-primary-500 font-medium uppercase tracking-wide">
                 {tx.categories[product.category]}
               </span>
-              <h1 className={cn("text-2xl sm:text-3xl font-bold text-primary-800 mt-1.5 mb-2", isRtl ? "font-arabic" : "font-serif")}>
+              <h1 className={cn("text-2xl sm:text-3xl font-bold text-earth-800 mt-1.5 mb-2", isRtl ? "font-arabic" : "font-serif")}>
                 {translation.name}
               </h1>
               <p className="text-muted-foreground leading-relaxed text-base">
@@ -246,7 +257,7 @@ export default function ProductDetailPage() {
         <div className="grid lg:grid-cols-3 gap-6 mb-16">
           {/* Description */}
           <div className={cn("lg:col-span-1 bg-white rounded-2xl p-6 border border-border/50", isRtl ? "text-right" : "text-left")}>
-            <h2 className={cn("text-lg font-semibold text-primary-800 mb-4 flex items-center gap-2", isRtl ? "flex-row-reverse justify-end" : "")}>
+            <h2 className={cn("text-lg font-semibold text-earth-800 mb-4 flex items-center gap-2", isRtl ? "flex-row-reverse justify-end" : "")}>
               <Leaf className="w-5 h-5 text-primary-500" />
               {lang === "ar" ? "وصف المنتج" : "Description"}
             </h2>
@@ -261,7 +272,7 @@ export default function ProductDetailPage() {
 
           {/* Benefits */}
           <div className={cn("bg-white rounded-2xl p-6 border border-border/50", isRtl ? "text-right" : "text-left")}>
-            <h2 className={cn("text-lg font-semibold text-primary-800 mb-4 flex items-center gap-2", isRtl ? "flex-row-reverse justify-end" : "")}>
+            <h2 className={cn("text-lg font-semibold text-earth-800 mb-4 flex items-center gap-2", isRtl ? "flex-row-reverse justify-end" : "")}>
               <CheckCircle className="w-5 h-5 text-honey-500" />
               {tx.products.benefits}
             </h2>
@@ -305,7 +316,7 @@ export default function ProductDetailPage() {
         {/* Related Products */}
         {related.length > 0 && (
           <div>
-            <h2 className={cn("text-2xl font-bold text-primary-800 mb-8", isRtl ? "text-right font-arabic" : "font-serif")}>
+            <h2 className={cn("text-2xl font-bold text-earth-800 mb-8", isRtl ? "text-right font-arabic" : "font-serif")}>
               {tx.products.relatedProducts}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

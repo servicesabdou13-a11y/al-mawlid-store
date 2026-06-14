@@ -69,7 +69,7 @@ export default function AboutSection() {
               <span className="inline-block bg-honey-100 text-honey-700 text-sm font-medium px-4 py-1.5 rounded-full mb-4">
                 {tx.about.badge}
               </span>
-              <h2 className={cn("text-3xl sm:text-4xl font-bold text-primary-800 mb-4", isRtl ? "font-arabic" : "font-serif")}>
+              <h2 className={cn("text-3xl sm:text-4xl font-bold text-earth-800 mb-4", isRtl ? "font-arabic" : "font-serif")}>
                 {tx.about.title}
               </h2>
               <p className="text-muted-foreground leading-relaxed text-base">

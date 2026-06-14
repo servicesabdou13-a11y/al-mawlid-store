@@ -8,7 +8,7 @@ import { useLanguageStore } from "@/lib/store/languageStore";
 import { t } from "@/lib/i18n/translations";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { AlMawlidLogo } from "@/components/ui/AlMawlidLogo";
+import { LogoImage } from "@/components/ui/LogoImage";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -52,7 +52,7 @@ export default function Navbar() {
               isScrolled ? "" : "ring-2 ring-honey-400/30"
             )}
           >
-            <AlMawlidLogo size={44} />
+            <LogoImage size={44} />
           </div>
           {/* Brand text name */}
           <div
@@ -156,7 +156,7 @@ export default function Navbar() {
         <div className="md:hidden bg-white border-b border-border shadow-lg animate-fade-in">
           {/* Logo row in mobile menu */}
           <div className="flex items-center gap-3 px-5 py-3 border-b border-earth-100">
-            <AlMawlidLogo size={36} />
+            <LogoImage size={36} />
             <div>
               <p className="text-sm font-bold text-earth-700 font-arabic">تعاونية المولد</p>
               <p className="text-[10px] text-honey-600 tracking-widest uppercase">Cooperative Almawlid</p>
